@@ -1,8 +1,6 @@
 # ZabbixContainer
 Using Docker Containers for Zabbix Monitoring by using MicroServices Approach 
 
-Welcome to the ZabbixContainer wiki!
-
 ***
 
 ## Pull base images
@@ -12,6 +10,7 @@ $ docker pull zabbix/zabbix-server-mysql
 $ docker pull zabbix/zabbix-web-nginx-mysql
 $ docker pull zabbix/zabbix-agent
 ```
+***
 
 ## Zabbix Mysql Database
 ```
@@ -37,6 +36,8 @@ $ quit;
 
 ```DBHOST=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ZabbixDB)```
 
+***
+
 ## Zabbix Server
 
 ```docker run --name ZabbixServer -p 10051:10051 -e DB_SERVER_HOST=$DBHOST -e MYSQL_USER=$DBUSER -e MYSQL_PASSWORD=$DBPASS -d zabbix/zabbix-server-mysql```
@@ -47,6 +48,8 @@ $ quit;
 #> docker exec -it ZabbixServer /bin/bash
 #> ps -ef
 ```
+
+***
 
 ## Nginx Web Server
 
@@ -63,6 +66,7 @@ $ quit;
 #> Test link by using following link
 #> elinks http://$WEBHOST/zabbix
 ```
+***
 
 ## Zabbix Agent
 
