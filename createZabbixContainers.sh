@@ -49,7 +49,7 @@ WEBHOST=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' ZabbixWeb)
 
 #### Zabbix Agent
 
-docker run --name ZabbixAgent1 -e ZBX_HOSTNAME="agent1" -e ZBX_SERVER_HOST=$ZSHOST  -d zabbix/zabbix-agent
+docker run --name ZabbixAgent1 -p 10050:10050 -e ZBX_HOSTNAME="agent1" -e ZBX_SERVER_HOST=$ZSHOST  -d zabbix/zabbix-agent
 sleep 3
 docker logs ZabbixAgent1
 
